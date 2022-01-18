@@ -1,0 +1,19 @@
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-style: oblique;
+    text-align: center;
+    color: salmon;
+}
+#game {
+    width: 450px;
+    height: 450px;
+    background: pink; 
+    margin: auto;
+}
+.block {
+    width: 150px;
+    height: 150px;
+    border: 1px solid white;
+    float: left;
+    box-sizing: border-box;
+}
