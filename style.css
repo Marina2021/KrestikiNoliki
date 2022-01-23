@@ -30,3 +30,11 @@ h1 {
     margin: auto;
     font-size: 30px;
 }
+#closebtn {
+    background-color: green;
+    width: auto;
+    height: auto;
+    font-size: 20px;
+    color:ivory;
+    border-radius: 10px;
+}
