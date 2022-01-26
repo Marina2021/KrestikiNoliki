@@ -16,7 +16,7 @@ document.getElementById('game').onclick=function(event){
         } 
         turn++;
         checkWinner();
-        if (turn==9) {
+        if (turn==9 && gameOver == false) {
             document.getElementById('status').innerHTML="Ничья! Победила дружба!";
             gameOver=true;
         }
