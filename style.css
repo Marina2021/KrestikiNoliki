@@ -1,41 +1,67 @@
-h1 {
-    font-style: oblique;
-    text-align: center;
-    color: salmon;
+.zero {
+    background-image: url(O.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-#game {
-    width: 450px;
-    height: 450px;
-    background: pink; 
-    margin: auto;
+.hero {
+    background-image: url(X.JPG);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
-.block {
-    width: 150px;
-    height: 150px;
-    border: 3px solid white;
+.content {
+    width: 380px;
+    height: 380px;
+    margin: 250px auto;
+}
+.cell{
     float: left;
-    box-sizing: border-box;
-    line-height: 150px;
-    text-align: center;
-    font-size: 140px;
-    color: salmon;
+    height: 96px;
+    width: 96px;
+    margin: 15px;
 }
-
+.cell:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.linear {
+    position: absolute;
+}
+.line1, .line2, .line3, .line4 {
+    width: 380px;
+    height: 18px;
+    position: absolute;
+    user-select: none;
+}
+.line1 {
+    margin-top: 117px;
+    transform: rotate(-3deg);
+}
+.line2 {
+    margin-top: 242px;
+    transform: rotate(183deg);
+}
+.line3 {
+    margin-top: 181px;
+    margin-left: -64px;
+    transform: rotate(93deg);
+}
+.line4 {
+    margin-top: 181px;
+    margin-left: 64px;
+    transform: rotate(267deg);
+}
 #status {
     text-align: center;
-    color: salmon;
-    width: 450px;
-    border-radius: 10px;
-    border: 2px solid sienna;
+    color: black;
+    width: auto;
     margin: auto;
     font-size: 30px;
 }
 #closebtn {
-    background-color: green;
+    background-color: darkgrey;
     width: auto;
     height: auto;
     font-size: 20px;
-    color:ivory;
+    color:darkblue;
     border-radius: 10px;
 }
 #pcbutton {

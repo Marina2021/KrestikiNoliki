@@ -1,62 +1,28 @@
-for (let i=0; i<9; i++) {
-    document.getElementById('game').innerHTML+='<div class="block"><div>';
-} 
-let turn = 0;
-let gameOver = false;
-document.getElementById('game').onclick=function(event){
-       if (event.target.className=='block' 
-            && event.target.innerHTML=='<div></div>'
-            && gameOver == false){
-            if (turn%2==0){
-            event.target.innerHTML='X';
-            document.getElementById('status').innerHTML="Следующий ход играют Нолики!";
-        }else{
-            event.target.innerHTML='0';
-            document.getElementById('status').innerHTML="Следующий ход играют Крестики!";
-        } 
-        turn++;
-        checkWinner();
-        if (turn==9 && gameOver == false) {
-            document.getElementById('status').innerHTML="Ничья! Победила дружба!";
-            gameOver=true;
-        }
-    }
-}
-function checkWinner(){
-    let allblock = document.getElementsByClassName('block');
-    let win = [
-        [0,1,2],
-        [3,4,5],
-        [6,7,8],
-        [0,3,6],
-        [1,4,7],
-        [2,5,8],
-        [0,4,8],
-        [2,4,6]
-    ];
-    for(i = 0; i < win.length; i++) {
-        if(allblock[win[i][0]].innerHTML == 'X' 
-        && allblock[win[i][1]].innerHTML == 'X' 
-        && allblock[win[i][2]].innerHTML == 'X'
-        ) {
-            result = 'крестики';
-            prepareResult(result);
-            gameOver = true;
-        } else if(allblock[win[i][0]].innerHTML == '0' 
-        && allblock[win[i][1]].innerHTML == '0' 
-        && allblock[win[i][2]].innerHTML == '0'
-        ) {
-            result = 'нолики';
-            prepareResult(result);
-            gameOver = true;
-        } 
-    }
+var x = new Array(9);
+
+function zero() {
+    var id = Math.floor(Math.random() * 9);
+    x[id] ? zero(): move(id, 'zero');    
 }
 
-const prepareResult = result => {
-    document.getElementById('status').innerHTML = `Победили ${result}!`;
+function checkEnd() {
+    if ( x[0]=='zero' && x[1]=='zero' && x[2]=='zero' || x[0]=='hero' && x[1]=='hero' && x[2]=='hero') return true;
+    if ( x[3]=='zero' && x[4]=='zero' && x[5]=='zero' || x[3]=='hero' && x[4]=='hero' && x[5]=='hero') return true;
+    if ( x[6]=='zero' && x[7]=='zero' && x[8]=='zero' || x[6]=='hero' && x[7]=='hero' && x[8]=='hero') return true;
+    if ( x[0]=='zero' && x[3]=='zero' && x[6]=='zero' || x[0]=='hero' && x[3]=='hero' && x[6]=='hero') return true;
+    if ( x[1]=='zero' && x[4]=='zero' && x[7]=='zero' || x[1]=='hero' && x[4]=='hero' && x[7]=='hero') return true;
+    if ( x[2]=='zero' && x[5]=='zero' && x[8]=='zero' || x[2]=='hero' && x[5]=='hero' && x[8]=='hero') return true;
+    if ( x[0]=='zero' && x[4]=='zero' && x[8]=='zero' || x[0]=='hero' && x[4]=='hero' && x[8]=='hero') return true;
+    if ( x[2]=='zero' && x[4]=='zero' && x[6]=='zero' || x[2]=='hero' && x[4]=='hero' && x[6]=='hero') return true;
+    if ( x[0] && x[1] && x[2] && x[3] && x[4] && x[5] && x[6] && x[7] && x[8] ) return true;
 }
-document.getElementById('closebtn').onclick=function(event) {
-    location.reload();    
+function move(id, role) {
+    if(x[id]) return false;
+    x[id] = role;
+    document.getElementById(id).className = 'cell ' + role;
+    !checkEnd() ? (role == 'hero') ? zero() : null : reset();
 }
-
+function reset() {
+    alert('Игра оконцена!');
+    location.reload(); 
+}
